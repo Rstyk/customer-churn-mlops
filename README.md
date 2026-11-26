@@ -95,3 +95,48 @@ python src/train.py
 ```
 
 Модель використовує перевірений та підготовлений датасет версії v1.
+
+## Лабораторна робота №3
+
+### Запуск MLflow
+
+```powershell
+python -m mlflow server --backend-store-uri sqlite:///mlflow.db --host 127.0.0.1 --port 5000
+```
+
+Інтерфейс MLflow доступний за адресою:
+http://127.0.0.1:5000
+
+### Запуск експериментів
+
+Логістична регресія:
+
+```powershell
+python src/train_experiments.py --model-type logistic_regression
+```
+
+Випадковий ліс (Random Forest):
+
+```powershell
+python src/train_experiments.py --model-type random_forest
+```
+
+### Збереження результатів
+
+Параметри та метрики експериментів зберігаються
+у локальній базі mlflow.db, а артефакти — у mlartifacts/.
+
+Результати можна переглянути в розділі Experiments.
+
+### Реєстр моделей
+
+За метрикою ROC-AUC обрано модель Random Forest.
+
+Модель зареєстровано під назвою
+CustomerChurnClassifier, версія 1.
+
+Переглянути модель можна в розділі Model registry.
+
+Результати порівняння моделей збережено у
+reports/model_selection.md.
+
